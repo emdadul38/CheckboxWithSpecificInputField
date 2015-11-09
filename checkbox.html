@@ -1,0 +1,20 @@
+ <td><input type="checkbox" class="check" id="course_id" name="course_id[]" value="<?php echo $row->COURSE_ID; ?>"></td>
+
+<?php echo form_dropdown("cmbCategory$row->COURSE_ID", $category, $row->C_CAT_ID, "class='form-control'  nameid='cmbCategory' id ='course_id_$row->COURSE_ID'") ?>
+</td>
+<script>
+    var empty_seq = 0;
+    $('#frmCourseOffer input[type="checkbox"]').each(function () {
+        if ($(this).is(':checked')) {
+            var id = $(this).val();
+            var category = $("#course_id_" + id).val();
+            if (category == "") {
+                is_valid = 1;
+                empty_seq = 1;
+            }
+        }
+    });
+    if (empty_seq == 1) {
+        alert("Please Select Category");
+    }
+</script>
